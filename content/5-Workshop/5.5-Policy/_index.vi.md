@@ -1,95 +1,134 @@
 ---
-title : "VPC Endpoint Policies"
-date : 2024-01-01
-weight : 5
-chapter : false
-pre : " <b> 5.5 </b> "
+title: "Triển khai ứng dụng"
+date: 2026-07-20
+weight: 5
+chapter: false
+pre: " <b> 5.5. </b> "
 ---
 
-Khi bạn tạo một Interface Endpoint  hoặc cổng, bạn có thể đính kèm một chính sách điểm cuối để kiểm soát quyền truy cập vào dịch vụ mà bạn đang kết nối. Chính sách VPC Endpoint là chính sách tài nguyên IAM mà bạn đính kèm vào điểm cuối. Nếu bạn không đính kèm chính sách khi tạo điểm cuối, thì AWS sẽ đính kèm chính sách mặc định cho bạn để cho phép toàn quyền truy cập vào dịch vụ thông qua điểm cuối.
+# Triển khai và phân phối ứng dụng
 
-Bạn có thể tạo chính sách chỉ hạn chế quyền truy cập vào các S3 bucket cụ thể. Điều này hữu ích nếu bạn chỉ muốn một số Bộ chứa S3 nhất định có thể truy cập được thông qua điểm cuối.
+## Frontend: React, S3 và CloudFront
 
-Trong phần này, bạn sẽ tạo chính sách VPC Endpoint hạn chế quyền truy cập vào S3 bucket được chỉ định trong chính sách VPC Endpoint.
+Build frontend:
 
-![endpoint diagram](/images/5-Workshop/5.5-Policy/s3-bucket-policy.png)
-
-#### Kết nối tới EC2 và xác minh kết nối tới S3. 
-
-1. Bắt đầu một phiên AWS Session Manager mới trên máy chủ có tên là Test-Gateway-Endpoint. Từ phiên này, xác minh rằng bạn có thể liệt kê nội dung của bucket mà bạn đã tạo trong Phần 1: Truy cập S3 từ VPC.
-
+```bash
+cd frontend
+npm install
+npm run build
 ```
-aws s3 ls s3://<your-bucket-name>
+
+Đồng bộ thư mục `dist/` lên bucket frontend private. Không dùng `--delete` khi chưa kiểm tra kỹ phạm vi.
+
+Sau khi đồng bộ, thư mục gốc của bucket phải có `index.html`, thư mục `assets/` và các icon cần thiết. `index.html` là entry point của SPA và được cấu hình làm Default root object trên CloudFront.
+
+![Thư mục gốc của S3 frontend với index.html và assets](/5-workshop/document-security/img-22-frontend-bucket-root.png)
+
+Thư mục `assets/` chứa các bundle JavaScript và CSS được Vite tạo trong quá trình build. Tên file có hash giúp trình duyệt và CloudFront quản lý cache theo từng phiên bản triển khai.
+
+![Các bundle JavaScript và CSS trong thư mục assets của S3 frontend](/5-workshop/document-security/img-22-frontend-assets.png)
+
+```bash
+aws s3 sync ./dist s3://<frontend-bucket>
+aws s3 cp ./dist/index.html s3://<frontend-bucket>/index.html \
+  --content-type "text/html" \
+  --cache-control "no-cache, no-store, must-revalidate"
 ```
-![test](/images/5-Workshop/5.5-Policy/test1.png)
 
-Nội dung của bucket bao gồm hai tệp có dung lượng 1GB đã được tải lên trước đó.
+Cấu hình CloudFront:
 
-2. Tạo một bucket S3 mới; tuân thủ mẫu đặt tên mà bạn đã sử dụng trong Phần 1, nhưng thêm '-2' vào tên. Để các trường khác là mặc định và nhấp vào **Create**.
+| Thiết lập | Giá trị |
+|---|---|
+| Default root object | `index.html` |
+| Default behavior | S3 private qua OAC |
+| `/api/*` behavior | EC2/Nginx origin, cache disabled |
+| Viewer protocol | Redirect HTTP to HTTPS |
+| SPA fallback | 403/404 trả `/index.html` với HTTP 200 |
 
-![create bucket](/images/5-Workshop/5.5-Policy/create-bucket.png)
+Distribution sử dụng hai origin: S3 cho frontend và `SecurityPortalBackend` cho API chạy trên EC2.
 
-3. Tạo bucket thành công.
+![Hai CloudFront origins dành cho S3 frontend và EC2 backend](/5-workshop/document-security/img-23-cloudfront-origins.png)
 
-![Success](/images/5-Workshop/5.5-Policy/create-bucket-success.png)
+Behavior `/api/*` định tuyến request đến backend, tắt cache và chuyển đầy đủ thông tin viewer cần thiết. Default behavior phân phối frontend từ S3 với cache tối ưu. Cả hai đều chuyển HTTP sang HTTPS.
 
-Policy mặc định cho phép truy cập vào tất cả các S3 Buckets thông qua VPC endpoint.
+![CloudFront behaviors cho API backend và S3 frontend](/5-workshop/document-security/img-23-cloudfront-behaviors.png)
 
-4. Trong giao diện **Edit Policy**, sao chép và dán theo policy sau, thay thế yourbucketname-2 với tên bucket thứ hai của bạn. Policy này sẽ cho phép truy cập đến bucket mới thông qua VPC endpoint, nhưng không cho phép truy cập đến các bucket còn lại. Chọn **Save** để kích hoạt policy.
+Sau mỗi lần deploy, tạo invalidation:
 
-
+```bash
+aws cloudfront create-invalidation \
+  --distribution-id <distribution-id> \
+  --paths "/*"
 ```
-{
-  "Id": "Policy1631305502445",
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "Stmt1631305501021",
-      "Action": "s3:*",
-      "Effect": "Allow",
-      "Resource": [
-      				"arn:aws:s3:::yourbucketname-2",
-       				"arn:aws:s3:::yourbucketname-2/*"
-       ],
-      "Principal": "*"
-    }
-  ]
+
+Sau khi distribution triển khai hoàn tất, truy cập CloudFront domain bằng HTTPS và kiểm tra route `/login`. Giao diện phải tải đầy đủ bundle, icon và form đăng nhập mà không truy cập trực tiếp bucket S3.
+
+![Website Document Security được phân phối qua CloudFront](/5-workshop/document-security/img-24-cloudfront-website.png)
+
+## Truy cập ứng dụng
+
+{{% button href="https://d3rxc4d21dw065.cloudfront.net/login" icon="fas fa-external-link-alt" %}}Truy cập Document Security{{% /button %}}
+
+**URL:** [https://d3rxc4d21dw065.cloudfront.net/login](https://d3rxc4d21dw065.cloudfront.net/login)
+
+### Tài khoản dùng thử
+
+| Vai trò | Tên đăng nhập | Mật khẩu | Quyền chính |
+|---|---|---|---|
+| Admin | `minhtri` | `Minhtri@123` | Quản lý tài liệu, phiên bản, Recycle bin và incident |
+| User | `thanhnam` | `Thanhnam@123` | Xem, upload và download tài liệu sạch |
+
+{{% notice warning %}}
+Chỉ sử dụng dữ liệu thử nghiệm. Không upload tài liệu cá nhân, thông tin bí mật hoặc nội dung nhạy cảm lên hệ thống demo.
+{{% /notice %}}
+
+## Backend: EC2, Nginx và Gunicorn
+
+Luồng request:
+
+```text
+CloudFront /api/* -> Nginx :80 -> Gunicorn/Flask :5000
+```
+
+Trước khi triển khai backend, xác nhận EC2 ở trạng thái **Running** và tất cả status checks đều passed. Môi trường lab sử dụng instance `t3.micro` trong Availability Zone `ap-southeast-1a`.
+
+![Backend EC2 đang Running với status checks passed](/5-workshop/document-security/img-25-ec2-running.png)
+
+Cài dependency trong virtual environment và chạy Gunicorn bằng `systemd`, đặt `Restart=always`. Service đọc biến môi trường từ file chỉ root/service account có quyền truy cập.
+
+```bash
+cd /app/backend
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+Cấu hình Nginx mẫu:
+
+```nginx
+location /api/ {
+    proxy_pass http://127.0.0.1:5000;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    client_max_body_size 20M;
 }
 ```
 
-![custom policy](/images/5-Workshop/5.5-Policy/policy2.png)
+## Kiểm tra health
 
-Cấu hình policy thành công.
-
-![success](/images/5-Workshop/5.5-Policy/success.png)
-
-5. Từ session của bạn trên Test-Gateway-Endpoint instance, kiểm tra truy cập đến S3 bucket bạn tạo ở bước đầu
-
-```
-aws s3 ls s3://<yourbucketname>
+```bash
+curl -i http://<backend-origin>/api/health
+curl -i https://<cloudfront-domain>/api/health
 ```
 
-Câu lệnh trả về lỗi bởi vì truy cập vào S3 bucket không có quyền trong VPC endpoint policy.
+Kết quả cần thể hiện backend, S3 và ba bảng DynamoDB đều `ok: true`. Nếu một dependency lỗi, trạng thái tổng phải là `degraded`.
 
-![error](/images/5-Workshop/5.5-Policy/error.png)
+Kết quả dưới đây xác nhận endpoint `/api/health` hoạt động qua CloudFront. Backend, S3, bảng Documents, SecurityIncidents và DocumentVersionAudit đều trả `ok: true`.
 
-6. Trở lại home directory của bạn trên EC2 instance ```cd~```
+![Kết quả API health check qua CloudFront](/5-workshop/document-security/img-26-cloudfront-health-check.png)
 
-+ Tạo file ```fallocate -l 1G test-bucket2.xyz ```
-+ Sao chép file lên bucket thứ  2 ```aws s3 cp test-bucket2.xyz s3://<your-2nd-bucket-name>```
-
-![success](/images/5-Workshop/5.5-Policy/test2.png)
-
-Thao tác này được cho phép bởi VPC endpoint policy.
-
-![success](/images/5-Workshop/5.5-Policy/test2-success.png)
-
-Sau đó chúng ta kiểm tra truy cập vào S3 bucket đầu tiên
-
- ```aws s3 cp test-bucket2.xyz s3://<your-1st-bucket-name>```
-
- ![fail](/images/5-Workshop/5.5-Policy/test2-fail.png)
-
- Câu lệnh xảy ra lỗi bởi vì bucket không có quyền truy cập bởi VPC endpoint policy.
-
-Trong phần này, bạn đã tạo chính sách VPC Endpoint cho Amazon S3 và sử dụng AWS CLI để kiểm tra chính sách. Các hoạt động AWS CLI liên quan đến bucket S3 ban đầu của bạn thất bại vì bạn áp dụng một chính sách chỉ cho phép truy cập đến bucket thứ hai mà bạn đã tạo. Các hoạt động AWS CLI nhắm vào bucket thứ hai của bạn thành công vì chính sách cho phép chúng. Những chính sách này có thể hữu ích trong các tình huống khi bạn cần kiểm soát quyền truy cập vào tài nguyên thông qua VPC Endpoint.
+{{% notice info %}}
+Trong production, nên đặt backend sau Application Load Balancer, dùng HTTPS đến origin và cân nhắc Auto Scaling Group.
+{{% /notice %}}

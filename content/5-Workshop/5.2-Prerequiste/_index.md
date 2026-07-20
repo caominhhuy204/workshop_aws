@@ -1,242 +1,119 @@
 ---
-title : "Prerequiste"
-date : 2024-01-01 
-weight : 2 
-chapter : false
-pre : " <b> 5.2. </b> "
+title: "Architecture and Preparation"
+date: 2026-07-20
+weight: 2
+chapter: false
+pre: " <b> 5.2. </b> "
 ---
 
-#### IAM permissions
-Add the following IAM permission policy to your user account to deploy and cleanup this workshop.
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "cloudformation:*",
-                "cloudwatch:*",
-                "ec2:AcceptTransitGatewayPeeringAttachment",
-                "ec2:AcceptTransitGatewayVpcAttachment",
-                "ec2:AllocateAddress",
-                "ec2:AssociateAddress",
-                "ec2:AssociateIamInstanceProfile",
-                "ec2:AssociateRouteTable",
-                "ec2:AssociateSubnetCidrBlock",
-                "ec2:AssociateTransitGatewayRouteTable",
-                "ec2:AssociateVpcCidrBlock",
-                "ec2:AttachInternetGateway",
-                "ec2:AttachNetworkInterface",
-                "ec2:AttachVolume",
-                "ec2:AttachVpnGateway",
-                "ec2:AuthorizeSecurityGroupEgress",
-                "ec2:AuthorizeSecurityGroupIngress",
-                "ec2:CreateClientVpnEndpoint",
-                "ec2:CreateClientVpnRoute",
-                "ec2:CreateCustomerGateway",
-                "ec2:CreateDhcpOptions",
-                "ec2:CreateFlowLogs",
-                "ec2:CreateInternetGateway",
-                "ec2:CreateLaunchTemplate",
-                "ec2:CreateNetworkAcl",
-                "ec2:CreateNetworkInterface",
-                "ec2:CreateNetworkInterfacePermission",
-                "ec2:CreateRoute",
-                "ec2:CreateRouteTable",
-                "ec2:CreateSecurityGroup",
-                "ec2:CreateSubnet",
-                "ec2:CreateSubnetCidrReservation",
-                "ec2:CreateTags",
-                "ec2:CreateTransitGateway",
-                "ec2:CreateTransitGatewayPeeringAttachment",
-                "ec2:CreateTransitGatewayPrefixListReference",
-                "ec2:CreateTransitGatewayRoute",
-                "ec2:CreateTransitGatewayRouteTable",
-                "ec2:CreateTransitGatewayVpcAttachment",
-                "ec2:CreateVpc",
-                "ec2:CreateVpcEndpoint",
-                "ec2:CreateVpcEndpointConnectionNotification",
-                "ec2:CreateVpcEndpointServiceConfiguration",
-                "ec2:CreateVpnConnection",
-                "ec2:CreateVpnConnectionRoute",
-                "ec2:CreateVpnGateway",
-                "ec2:DeleteCustomerGateway",
-                "ec2:DeleteFlowLogs",
-                "ec2:DeleteInternetGateway",
-                "ec2:DeleteNetworkInterface",
-                "ec2:DeleteNetworkInterfacePermission",
-                "ec2:DeleteRoute",
-                "ec2:DeleteRouteTable",
-                "ec2:DeleteSecurityGroup",
-                "ec2:DeleteSubnet",
-                "ec2:DeleteSubnetCidrReservation",
-                "ec2:DeleteTags",
-                "ec2:DeleteTransitGateway",
-                "ec2:DeleteTransitGatewayPeeringAttachment",
-                "ec2:DeleteTransitGatewayPrefixListReference",
-                "ec2:DeleteTransitGatewayRoute",
-                "ec2:DeleteTransitGatewayRouteTable",
-                "ec2:DeleteTransitGatewayVpcAttachment",
-                "ec2:DeleteVpc",
-                "ec2:DeleteVpcEndpoints",
-                "ec2:DeleteVpcEndpointServiceConfigurations",
-                "ec2:DeleteVpnConnection",
-                "ec2:DeleteVpnConnectionRoute",
-                "ec2:Describe*",
-                "ec2:DetachInternetGateway",
-                "ec2:DisassociateAddress",
-                "ec2:DisassociateRouteTable",
-                "ec2:GetLaunchTemplateData",
-                "ec2:GetTransitGatewayAttachmentPropagations",
-                "ec2:ModifyInstanceAttribute",
-                "ec2:ModifySecurityGroupRules",
-                "ec2:ModifyTransitGatewayVpcAttachment",
-                "ec2:ModifyVpcAttribute",
-                "ec2:ModifyVpcEndpoint",
-                "ec2:ReleaseAddress",
-                "ec2:ReplaceRoute",
-                "ec2:RevokeSecurityGroupEgress",
-                "ec2:RevokeSecurityGroupIngress",
-                "ec2:RunInstances",
-                "ec2:StartInstances",
-                "ec2:StopInstances",
-                "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
-                "ec2:UpdateSecurityGroupRuleDescriptionsIngress",
-                "iam:AddRoleToInstanceProfile",
-                "iam:AttachRolePolicy",
-                "iam:CreateInstanceProfile",
-                "iam:CreatePolicy",
-                "iam:CreateRole",
-                "iam:DeleteInstanceProfile",
-                "iam:DeletePolicy",
-                "iam:DeleteRole",
-                "iam:DeleteRolePolicy",
-                "iam:DetachRolePolicy",
-                "iam:GetInstanceProfile",
-                "iam:GetPolicy",
-                "iam:GetRole",
-                "iam:GetRolePolicy",
-                "iam:ListPolicyVersions",
-                "iam:ListRoles",
-                "iam:PassRole",
-                "iam:PutRolePolicy",
-                "iam:RemoveRoleFromInstanceProfile",
-                "lambda:CreateFunction",
-                "lambda:DeleteFunction",
-                "lambda:DeleteLayerVersion",
-                "lambda:GetFunction",
-                "lambda:GetLayerVersion",
-                "lambda:InvokeFunction",
-                "lambda:PublishLayerVersion",
-                "logs:CreateLogGroup",
-                "logs:DeleteLogGroup",
-                "logs:DescribeLogGroups",
-                "logs:PutRetentionPolicy",
-                "route53:ChangeTagsForResource",
-                "route53:CreateHealthCheck",
-                "route53:CreateHostedZone",
-                "route53:CreateTrafficPolicy",
-                "route53:DeleteHostedZone",
-                "route53:DisassociateVPCFromHostedZone",
-                "route53:GetHostedZone",
-                "route53:ListHostedZones",
-                "route53domains:ListDomains",
-                "route53domains:ListOperations",
-                "route53domains:ListTagsForDomain",
-                "route53resolver:AssociateResolverEndpointIpAddress",
-                "route53resolver:AssociateResolverRule",
-                "route53resolver:CreateResolverEndpoint",
-                "route53resolver:CreateResolverRule",
-                "route53resolver:DeleteResolverEndpoint",
-                "route53resolver:DeleteResolverRule",
-                "route53resolver:DisassociateResolverEndpointIpAddress",
-                "route53resolver:DisassociateResolverRule",
-                "route53resolver:GetResolverEndpoint",
-                "route53resolver:GetResolverRule",
-                "route53resolver:ListResolverEndpointIpAddresses",
-                "route53resolver:ListResolverEndpoints",
-                "route53resolver:ListResolverRuleAssociations",
-                "route53resolver:ListResolverRules",
-                "route53resolver:ListTagsForResource",
-                "route53resolver:UpdateResolverEndpoint",
-                "route53resolver:UpdateResolverRule",
-                "s3:AbortMultipartUpload",
-                "s3:CreateBucket",
-                "s3:DeleteBucket",
-                "s3:DeleteObject",
-                "s3:GetAccountPublicAccessBlock",
-                "s3:GetBucketAcl",
-                "s3:GetBucketOwnershipControls",
-                "s3:GetBucketPolicy",
-                "s3:GetBucketPolicyStatus",
-                "s3:GetBucketPublicAccessBlock",
-                "s3:GetObject",
-                "s3:GetObjectVersion",
-                "s3:GetBucketVersioning",
-                "s3:ListAccessPoints",
-                "s3:ListAccessPointsForObjectLambda",
-                "s3:ListAllMyBuckets",
-                "s3:ListBucket",
-                "s3:ListBucketMultipartUploads",
-                "s3:ListBucketVersions",
-                "s3:ListJobs",
-                "s3:ListMultipartUploadParts",
-                "s3:ListMultiRegionAccessPoints",
-                "s3:ListStorageLensConfigurations",
-                "s3:PutAccountPublicAccessBlock",
-                "s3:PutBucketAcl",
-                "s3:PutBucketPolicy",
-                "s3:PutBucketPublicAccessBlock",
-                "s3:PutObject",
-                "secretsmanager:CreateSecret",
-                "secretsmanager:DeleteSecret",
-                "secretsmanager:DescribeSecret",
-                "secretsmanager:GetSecretValue",
-                "secretsmanager:ListSecrets",
-                "secretsmanager:ListSecretVersionIds",
-                "secretsmanager:PutResourcePolicy",
-                "secretsmanager:TagResource",
-                "secretsmanager:UpdateSecret",
-                "sns:ListTopics",
-                "ssm:DescribeInstanceProperties",
-                "ssm:DescribeSessions",
-                "ssm:GetConnectionStatus",
-                "ssm:GetParameters",
-                "ssm:ListAssociations",
-                "ssm:ResumeSession",
-                "ssm:StartSession",
-                "ssm:TerminateSession"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
+# Architecture and Preparation
 
+## Architecture components
+
+| Component | Responsibility |
+|---|---|
+| CloudFront + AWS WAF | Entry point for the SPA and `/api/`; edge caching and request protection |
+| S3 Frontend + OAC | Private React build readable only by CloudFront |
+| EC2 + Nginx + Gunicorn/Flask | Reverse proxy and business APIs |
+| S3 Documents | Private, versioned, encrypted document storage |
+| DynamoDB | Document metadata, version audit, and incidents |
+| Cognito | User authentication and `admin` group mapping |
+| GuardDuty + Security Hub | Malware scanning and security finding aggregation |
+| EventBridge + Lambda | Event routing and processing |
+| Step Functions + SNS + API Gateway | Approval wait state, notification, and callback |
+| CloudWatch + Grafana | Logs, metrics, alarms, and dashboards |
+| Systems Manager | EC2 administration and private Grafana access |
+
+## Prerequisites
+
+- An AWS account with permissions for all workshop services.
+- AWS CLI v2, Node.js 18+, npm, Python 3.10+, Git, and the Session Manager plugin.
+- Default Region `ap-southeast-1`.
+- The project frontend, backend, Lambda, and Grafana source files.
+
+```bash
+aws sts get-caller-identity
+aws configure get region
 ```
 
-#### Provision resources using CloudFormation
+## IAM safety principles
 
-In this lab, we will use **N.Virginia region (us-east-1)**.
+Do not provide AWS credentials to the frontend. Use a least-privilege EC2 instance profile, restrict malware Lambda access by bucket/prefix, limit response actions through `ALLOWED_INSTANCE_IDS`, protect critical instances through `PROTECTED_INSTANCE_IDS`, and grant Grafana read-only CloudWatch access.
 
-To prepare the workshop environment, deploy this **CloudFormation Template** (click link): [PrivateLinkWorkshop ](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.us-east-1.amazonaws.com/reinvent-endpoints-builders-session/Nested.yaml&stackName=PLCloudSetup). Accept all of the defaults when deploying the template. 
+### Backend EC2 IAM Role
 
-![create stack](/images/5-Workshop/5.2-Prerequisite/create-stack1.png)
+The backend EC2 instance uses an IAM Role instead of long-lived access keys. Its policies support Systems Manager, CloudWatch Agent, metric access, Cognito authentication, document/version management, and invocation of the incident-response Lambda.
 
-+ Tick 2 acknowledgement boxes
-+ Choose **Create stack**
+![Policies attached to the backend EC2 IAM Role](/5-workshop/document-security/img-02-iam-role-policies.png)
 
-![create stack](/images/5-Workshop/5.2-Prerequisite/create-stack2.png)
+### System Lambda functions
 
-The **ClouddFormation** deployment requires about 15 minutes to complete.
+Four primary Lambda functions process malware scan results, send approval requests, receive approval callbacks, and perform incident-response actions.
 
-![complete](/images/5-Workshop/5.2-Prerequisite/complete.png)
+![AWS Lambda functions used by the Document Security system](/5-workshop/document-security/img-02-lambda-functions.png)
 
-+ **2 VPCs** have been created
+## Data layer
 
-![vpcs](/images/5-Workshop/5.2-Prerequisite/vpcs.png)
+Enable **Block Public Access**, **Versioning**, and **Default encryption** on the document bucket. Use `quarantine/` for new files and `clean/` for released files.
 
-+ **3 EC2s** have been created
+### Enable S3 Versioning
 
-![EC2](/images/5-Workshop/5.2-Prerequisite/ec2.png)
+S3 Versioning is **Enabled**, preserving multiple versions of an object and supporting recovery from accidental deletion or overwrites.
+
+![Bucket Versioning enabled on the document bucket](/5-workshop/document-security/img-03-s3-versioning.png)
+
+### Configure default encryption
+
+The bucket uses server-side encryption with Amazon S3 managed keys (`SSE-S3`). Amazon S3 automatically encrypts every new object at rest.
+
+![SSE-S3 default encryption on the document bucket](/5-workshop/document-security/img-03-s3-default-encryption.png)
+
+### Block public access
+
+**Block all public access** must remain **On** to prevent the bucket or its objects from becoming publicly accessible unintentionally.
+
+![Block all public access enabled on the document bucket](/5-workshop/document-security/img-04-s3-block-public-access.png)
+
+```bash
+aws s3api get-public-access-block --bucket <document-bucket>
+aws s3api get-bucket-versioning --bucket <document-bucket>
+aws s3api get-bucket-encryption --bucket <document-bucket>
+```
+
+Create three On-demand DynamoDB tables:
+
+| Table | Partition key | Sort key | Purpose |
+|---|---|---|---|
+| `Documents` | `documentid` | — | Current metadata and status |
+| `SecurityIncidents` | `incidentid` | — | Findings and response actions |
+| `DocumentVersionAudit` | `documentid` | `eventid` | Per-version action history |
+
+All three tables use **On-demand** capacity and must be **Active** before the backend starts reading or writing data.
+
+![The three system DynamoDB tables in Active state](/5-workshop/document-security/img-05-dynamodb-tables.png)
+
+After a user uploads a document, the `Documents` table stores its metadata and processing state. Review these records under **DynamoDB → Explore items → Documents**.
+
+![Document metadata items in the DynamoDB Documents table](/5-workshop/document-security/img-06-dynamodb-documents-items.png)
+
+## Backend environment
+
+```env
+AUTH_PROVIDER=cognito
+CORS_ALLOWED_ORIGINS=https://<cloudfront-domain>
+AWS_REGION=ap-southeast-1
+S3_BUCKET_NAME=<document-bucket>
+S3_QUARANTINE_PREFIX=quarantine
+DYNAMODB_DOCUMENTS_TABLE=Documents
+DYNAMODB_INCIDENTS_TABLE=SecurityIncidents
+DYNAMODB_VERSION_AUDIT_TABLE=DocumentVersionAudit
+SECURITY_RESPONSE_LAMBDA_FUNCTION=SecurityIncidentResponse
+JWT_SECRET_KEY=<long-random-secret>
+COGNITO_USER_POOL_ID=<user-pool-id>
+COGNITO_CLIENT_ID=<app-client-id>
+COGNITO_ADMIN_GROUP=admin
+```
+
+{{% notice warning %}}
+Never commit `.env` or expose real account IDs, ARNs, email addresses, secrets, or resource IDs in a public workshop.
+{{% /notice %}}
