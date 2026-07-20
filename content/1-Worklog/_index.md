@@ -6,34 +6,34 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
+{{% notice warning %}} 
+⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
 {{% /notice %}}
 
-**On this page**, you will need to introduce your worklog. **How** did you complete it? How many weeks did you take to complete the program? **What** did you do in those weeks?
+**This page** records the 12-week graduation internship worklog, updated according to the internship progress tracking form.
 
-Typically, and as a standard, a worklog is carried out over about 3 months (throughout the internship period) with weekly contents as follows:
+The weekly progress is organized as follows:
 
-**Week 1:** [Getting familiar with AWS and basic AWS services](1.1-week1/)
+**Week 1:** 15/04 - 23/04 - [Cloud computing and AWS platform overview](1.1-week1/)
 
-**Week 2:** [Doing task A...](1.2-week2/)
+**Week 2:** 24/04 - 01/05 - [AWS Management Console, IAM, Region, and Security Group](1.2-week2/)
 
-**Week 3:** [Doing task B...](1.3-week3/)
+**Week 3:** 02/05 - 09/05 - [EC2, S3 deployment, and access configuration](1.3-week3/)
 
-**Week 4:** [Doing task C...](1.4-week4/)
+**Week 4:** 10/05 - 17/05 - [Amazon VPC, Route 53, AWS CLI, and CloudWatch](1.4-week4/)
 
-**Week 5:** [Doing task D...](1.5-week5/)
+**Week 5:** 18/05 - 25/05 - [Amazon RDS, DynamoDB, and database management](1.5-week5/)
 
-**Week 6:** [Doing task E...](1.6-week6/)
+**Week 6:** 26/05 - 02/06 - [Application deployment on EC2 and Amazon RDS connection](1.6-week6/)
 
-**Week 7:** [Doing task G...](1.7-week7/)
+**Week 7:** 03/06 - 11/06 - [Git/GitHub and CI/CD workflow](1.7-week7/)
 
-**Week 8:** [Doing task H...](1.8-week8/)
+**Week 8:** 12/06 - 19/06 - [System monitoring with CloudWatch and CloudTrail](1.8-week8/)
 
-**Week 9:** [Doing task I...](1.9-week9/)
+**Week 9:** 20/06 - 27/06 - [Static website deployment with Amazon S3 and CloudFront](1.9-week9/)
 
-**Week 10:** [Doing task L...](1.10-week10/)
+**Week 10:** 28/06 - 05/07 - [Deployment automation with CodeDeploy and CodePipeline](1.10-week10/)
 
-**Week 11:** [Doing task M...](1.11-week11/)
+**Week 11:** 06/07 - 13/07 - [Docker and container deployment on EC2](1.11-week11/)
 
-**Week 12:** [Doing task N...](1.12-week12/)
+**Week 12:** 14/07 - 21/07 - [Internship result summary and report completion](1.12-week12/)
