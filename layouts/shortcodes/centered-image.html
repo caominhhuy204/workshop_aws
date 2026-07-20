@@ -1,0 +1,3 @@
+<p style="text-align:center">
+  <img src="{{ .Get "src" | strings.TrimPrefix "/" | relURL }}" alt="{{ .Get "alt" }}" style="{{ .Get "style" | safeCSS }}">
+</p>
