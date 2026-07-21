@@ -40,6 +40,7 @@ Kiến trúc sử dụng React, CloudFront và S3 cho giao diện; Flask chạy 
 5. [Triển khai và phân phối ứng dụng](5.5-Policy/)
 6. [Giám sát, kiểm thử và đánh giá](5.6-Cleanup/)
 7. [Vận hành, xử lý sự cố và dọn dẹp](5.7-Operations/)
+8. [Video Demo](5.8-Demo/)
 
 {{% notice warning %}}
 Workshop tạo các tài nguyên có thể phát sinh chi phí. Hãy triển khai trong tài khoản lab, không đưa access key, secret, email hoặc task token thật vào source code hay ảnh chụp.

@@ -1,28 +1,27 @@
 ---
 title: "Worklog Tuần 11"
-date: 2024-01-01
+date: 2026-07-03
 weight: 11
 chapter: false
 pre: " <b> 1.11. </b> "
 ---
 {{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
+**Lưu ý:** Các thông tin dưới đây được cập nhật theo phiếu theo dõi tiến độ thực tập tốt nghiệp.
 {{% /notice %}}
 
+### Mục tiêu tuần 11
 
-### Mục tiêu tuần 11:
+* Tìm hiểu Amazon Elastic Container Registry (ECR) và Amazon ECS.
 
-* Docker và triển khai container trên EC2.
+### Nội dung thực hiện trong tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | --- | --- | --- | --- |
-| 2-4 | - Tìm hiểu Docker và quy trình đóng gói ứng dụng. | 06/07/2026 | 09/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5-7 | - Triển khai và quản lý container trên máy chủ EC2. | 10/07/2026 | 13/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| STT | Công việc | Ngày hoàn thành theo phiếu | Nguồn tài liệu |
+| --- | --- | --- | --- |
+| 1 | Tìm hiểu Amazon Elastic Container Registry (ECR) và Amazon ECS. | 03/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2 | Thực hành triển khai ứng dụng trên AWS Fargate và theo dõi hoạt động. | 03/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
+### Kết quả đạt được tuần 11
 
-### Kết quả đạt được tuần 11:
-
-* Hoàn thành nội dung tuần 11: Docker và triển khai container trên EC2.
-* Nắm được kiến thức và thao tác thực hành tương ứng với kế hoạch trong phiếu theo dõi tiến độ.
+* Tìm hiểu Amazon Elastic Container Registry (ECR) và Amazon ECS.
+* Thực hành triển khai ứng dụng trên AWS Fargate và theo dõi hoạt động.
 * Ghi nhận kết quả thực hiện để phục vụ báo cáo thực tập tốt nghiệp.

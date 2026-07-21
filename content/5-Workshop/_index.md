@@ -40,6 +40,7 @@ These are shared demo accounts. Do not upload real or sensitive documents, and d
 5. [Application Deployment and Delivery](5.5-Policy/)
 6. [Monitoring, Testing, and Assessment](5.6-Cleanup/)
 7. [Operations, Troubleshooting, and Cleanup](5.7-Operations/)
+8. [Project Demo](5.8-Demo/)
 
 {{% notice warning %}}
 This workshop creates resources that may incur costs. Use a lab account and never expose access keys, secrets, email addresses, or task tokens in source code or screenshots.

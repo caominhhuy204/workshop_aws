@@ -1,27 +1,27 @@
 ---
 title: "Week 4 Worklog"
-date: 2024-01-01
+date: 2026-05-15
 weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
+{{% notice warning %}}
+**Note:** The following information is updated according to the graduation internship progress tracking form.
 {{% /notice %}}
 
-### Week 4 Objectives:
+### Week 4 Objective
 
-* Amazon VPC, Route 53, AWS CLI, and CloudWatch.
+* Amazon VPC, Subnet, Route Table, and Internet Gateway.
 
-### Tasks to be carried out this week:
+### Tasks Completed This Week
 
-| Day | Task | Start Date | Completion Date | Reference Material |
-| --- | --- | --- | --- | --- |
-| 2-4 | - Studied Amazon VPC, Route 53, AWS CLI, and CloudWatch. | 10/05/2026 | 13/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5-7 | - Practiced network configuration and system resource monitoring. | 14/05/2026 | 17/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| No. | Task | Completion Date in Tracking Form | Reference Material |
+| --- | --- | --- | --- |
+| 1 | Studied Amazon VPC, Subnet, Route Table, and Internet Gateway. | 15/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2 | Practiced building a private network and connecting resources on AWS. | 15/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
-### Week 4 Achievements:
+### Week 4 Achievements
 
-* Completed week 4 content: Amazon VPC, Route 53, AWS CLI, and CloudWatch.
-* Gained the knowledge and hands-on practice required by the progress tracking plan.
+* Studied Amazon VPC, Subnet, Route Table, and Internet Gateway.
+* Practiced building a private network and connecting resources on AWS.
 * Recorded implementation results for the graduation internship report.

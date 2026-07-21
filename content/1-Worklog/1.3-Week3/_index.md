@@ -1,27 +1,27 @@
 ---
 title: "Week 3 Worklog"
-date: 2024-01-01
+date: 2026-05-08
 weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
+{{% notice warning %}}
+**Note:** The following information is updated according to the graduation internship progress tracking form.
 {{% /notice %}}
 
-### Week 3 Objectives:
+### Week 3 Objective
 
-* EC2, S3 deployment, and access configuration.
+* Amazon EC2 server initialization and Amazon EBS storage configuration.
 
-### Tasks to be carried out this week:
+### Tasks Completed This Week
 
-| Day | Task | Start Date | Completion Date | Reference Material |
-| --- | --- | --- | --- | --- |
-| 2-4 | - Deployed EC2 and S3 services on AWS. | 02/05/2026 | 05/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5-7 | - Configured servers, data storage, and access permissions. | 06/05/2026 | 09/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| No. | Task | Completion Date in Tracking Form | Reference Material |
+| --- | --- | --- | --- |
+| 1 | Launched an Amazon EC2 server and configured Amazon EBS storage. | 08/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2 | Configured Security Group, Elastic IP, and tested server connectivity. | 08/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
-### Week 3 Achievements:
+### Week 3 Achievements
 
-* Completed week 3 content: EC2, S3 deployment, and access configuration.
-* Gained the knowledge and hands-on practice required by the progress tracking plan.
+* Launched an Amazon EC2 server and configured Amazon EBS storage.
+* Configured Security Group, Elastic IP, and tested server connectivity.
 * Recorded implementation results for the graduation internship report.

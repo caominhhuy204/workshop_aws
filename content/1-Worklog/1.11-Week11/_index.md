@@ -1,27 +1,27 @@
 ---
 title: "Week 11 Worklog"
-date: 2024-01-01
+date: 2026-07-03
 weight: 11
 chapter: false
 pre: " <b> 1.11. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
+{{% notice warning %}}
+**Note:** The following information is updated according to the graduation internship progress tracking form.
 {{% /notice %}}
 
-### Week 11 Objectives:
+### Week 11 Objective
 
-* Docker and container deployment on EC2.
+* Amazon Elastic Container Registry (ECR) and Amazon ECS.
 
-### Tasks to be carried out this week:
+### Tasks Completed This Week
 
-| Day | Task | Start Date | Completion Date | Reference Material |
-| --- | --- | --- | --- | --- |
-| 2-4 | - Studied Docker and the application containerization process. | 06/07/2026 | 09/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5-7 | - Deployed and managed containers on an EC2 server. | 10/07/2026 | 13/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| No. | Task | Completion Date in Tracking Form | Reference Material |
+| --- | --- | --- | --- |
+| 1 | Studied Amazon Elastic Container Registry (ECR) and Amazon ECS. | 03/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2 | Practiced deploying an application on AWS Fargate and monitoring its operation. | 03/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
-### Week 11 Achievements:
+### Week 11 Achievements
 
-* Completed week 11 content: Docker and container deployment on EC2.
-* Gained the knowledge and hands-on practice required by the progress tracking plan.
+* Studied Amazon Elastic Container Registry (ECR) and Amazon ECS.
+* Practiced deploying an application on AWS Fargate and monitoring its operation.
 * Recorded implementation results for the graduation internship report.

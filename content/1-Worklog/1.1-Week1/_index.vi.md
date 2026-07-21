@@ -1,28 +1,27 @@
 ---
 title: "Worklog Tuần 1"
-date: 2024-01-01
+date: 2026-04-23
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
 {{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
+**Lưu ý:** Các thông tin dưới đây được cập nhật theo phiếu theo dõi tiến độ thực tập tốt nghiệp.
 {{% /notice %}}
 
+### Mục tiêu tuần 1
 
-### Mục tiêu tuần 1:
+* Tìm hiểu tổng quan về điện toán đám mây và hệ sinh thái AWS.
 
-* Tìm hiểu tổng quan về điện toán đám mây và nền tảng AWS.
+### Nội dung thực hiện trong tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | --- | --- | --- | --- |
-| 2-4 | - Tìm hiểu tổng quan về điện toán đám mây và nền tảng AWS. | 15/04/2026 | 19/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5-7 | - Nghiên cứu kiến trúc hạ tầng và các dịch vụ cơ bản phục vụ triển khai hệ thống. | 20/04/2026 | 23/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| STT | Công việc | Ngày hoàn thành theo phiếu | Nguồn tài liệu |
+| --- | --- | --- | --- |
+| 1 | Tìm hiểu tổng quan về điện toán đám mây và hệ sinh thái AWS. | 23/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2 | Nghiên cứu Region, Availability Zone và kiến trúc hạ tầng trên AWS. | 23/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
+### Kết quả đạt được tuần 1
 
-### Kết quả đạt được tuần 1:
-
-* Hoàn thành nội dung tuần 1: Tìm hiểu tổng quan về điện toán đám mây và nền tảng AWS.
-* Nắm được kiến thức và thao tác thực hành tương ứng với kế hoạch trong phiếu theo dõi tiến độ.
+* Tìm hiểu tổng quan về điện toán đám mây và hệ sinh thái AWS.
+* Nghiên cứu Region, Availability Zone và kiến trúc hạ tầng trên AWS.
 * Ghi nhận kết quả thực hiện để phục vụ báo cáo thực tập tốt nghiệp.

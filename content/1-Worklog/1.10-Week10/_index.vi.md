@@ -1,28 +1,27 @@
 ---
 title: "Worklog Tuần 10"
-date: 2024-01-01
+date: 2026-06-26
 weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
 {{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
+**Lưu ý:** Các thông tin dưới đây được cập nhật theo phiếu theo dõi tiến độ thực tập tốt nghiệp.
 {{% /notice %}}
 
+### Mục tiêu tuần 10
 
-### Mục tiêu tuần 10:
+* Tìm hiểu AWS Lambda và Amazon API Gateway.
 
-* Tự động hóa triển khai với CodeDeploy và CodePipeline.
+### Nội dung thực hiện trong tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | --- | --- | --- | --- |
-| 2-4 | - Xây dựng quy trình triển khai tự động với CodeDeploy và CodePipeline. | 28/06/2026 | 01/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5-7 | - Tích hợp GitHub và kiểm thử quy trình Deploy. | 02/07/2026 | 05/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| STT | Công việc | Ngày hoàn thành theo phiếu | Nguồn tài liệu |
+| --- | --- | --- | --- |
+| 1 | Tìm hiểu AWS Lambda và Amazon API Gateway. | 26/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2 | Thực hành xây dựng chức năng không máy chủ và kết nối Amazon DynamoDB. | 26/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
+### Kết quả đạt được tuần 10
 
-### Kết quả đạt được tuần 10:
-
-* Hoàn thành nội dung tuần 10: Tự động hóa triển khai với CodeDeploy và CodePipeline.
-* Nắm được kiến thức và thao tác thực hành tương ứng với kế hoạch trong phiếu theo dõi tiến độ.
+* Tìm hiểu AWS Lambda và Amazon API Gateway.
+* Thực hành xây dựng chức năng không máy chủ và kết nối Amazon DynamoDB.
 * Ghi nhận kết quả thực hiện để phục vụ báo cáo thực tập tốt nghiệp.

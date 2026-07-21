@@ -1,27 +1,27 @@
 ---
 title: "Week 10 Worklog"
-date: 2024-01-01
+date: 2026-06-26
 weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
+{{% notice warning %}}
+**Note:** The following information is updated according to the graduation internship progress tracking form.
 {{% /notice %}}
 
-### Week 10 Objectives:
+### Week 10 Objective
 
-* Deployment automation with CodeDeploy and CodePipeline.
+* AWS Lambda and Amazon API Gateway.
 
-### Tasks to be carried out this week:
+### Tasks Completed This Week
 
-| Day | Task | Start Date | Completion Date | Reference Material |
-| --- | --- | --- | --- | --- |
-| 2-4 | - Built an automated deployment workflow with CodeDeploy and CodePipeline. | 28/06/2026 | 01/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5-7 | - Integrated GitHub and tested the deployment workflow. | 02/07/2026 | 05/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| No. | Task | Completion Date in Tracking Form | Reference Material |
+| --- | --- | --- | --- |
+| 1 | Studied AWS Lambda and Amazon API Gateway. | 26/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2 | Practiced building serverless functions and connecting them to Amazon DynamoDB. | 26/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
-### Week 10 Achievements:
+### Week 10 Achievements
 
-* Completed week 10 content: Deployment automation with CodeDeploy and CodePipeline.
-* Gained the knowledge and hands-on practice required by the progress tracking plan.
+* Studied AWS Lambda and Amazon API Gateway.
+* Practiced building serverless functions and connecting them to Amazon DynamoDB.
 * Recorded implementation results for the graduation internship report.

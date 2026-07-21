@@ -1,27 +1,27 @@
 ---
 title: "Week 5 Worklog"
-date: 2024-01-01
+date: 2026-05-22
 weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
+{{% notice warning %}}
+**Note:** The following information is updated according to the graduation internship progress tracking form.
 {{% /notice %}}
 
-### Week 5 Objectives:
+### Week 5 Objective
 
-* Amazon RDS, DynamoDB, and database management.
+* Amazon RDS and Amazon DynamoDB.
 
-### Tasks to be carried out this week:
+### Tasks Completed This Week
 
-| Day | Task | Start Date | Completion Date | Reference Material |
-| --- | --- | --- | --- | --- |
-| 2-4 | - Researched Amazon RDS and DynamoDB. | 18/05/2026 | 21/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5-7 | - Practiced database connection, backup, and management on AWS. | 22/05/2026 | 25/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| No. | Task | Completion Date in Tracking Form | Reference Material |
+| --- | --- | --- | --- |
+| 1 | Studied Amazon RDS and Amazon DynamoDB. | 22/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2 | Practiced creating, connecting, backing up, and restoring databases on AWS. | 22/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
-### Week 5 Achievements:
+### Week 5 Achievements
 
-* Completed week 5 content: Amazon RDS, DynamoDB, and database management.
-* Gained the knowledge and hands-on practice required by the progress tracking plan.
+* Studied Amazon RDS and Amazon DynamoDB.
+* Practiced creating, connecting, backing up, and restoring databases on AWS.
 * Recorded implementation results for the graduation internship report.
