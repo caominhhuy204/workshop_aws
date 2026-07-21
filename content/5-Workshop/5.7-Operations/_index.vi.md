@@ -10,29 +10,29 @@ pre: " <b> 5.7. </b> "
 
 ## Quy trình cập nhật frontend
 
-1. Sửa source và chạy `npm run build`.
-2. Upload `dist/` lên bucket frontend.
-3. Đặt `no-cache` cho `index.html`.
-4. Tạo CloudFront invalidation `/*`.
-5. Chờ `Completed` và kiểm tra bằng cửa sổ ẩn danh.
+1. Sửa source và chạy npm run build.
+2. Upload dist/ lên bucket frontend.
+3. Đặt no-cache cho index.html.
+4. Tạo CloudFront invalidation /*.
+5. Chờ Completed và kiểm tra bằng cửa sổ ẩn danh.
 
 ## Quy trình khởi động lại
 
-1. Start EC2 và chờ status checks `2/2`.
+1. Start EC2 và chờ status checks 2/2.
 2. Kiểm tra IP/origin và Security Group.
 3. Kiểm tra Nginx và backend service.
-4. Gọi `/api/health` trực tiếp và qua CloudFront.
+4. Gọi /api/health trực tiếp và qua CloudFront.
 5. Đăng nhập, tải Documents/Incidents và kiểm tra log.
 
 ## Xử lý sự cố thường gặp
 
 | Triệu chứng | Kiểm tra |
 |---|---|
-| CloudFront 504 ở `/api/` | EC2, origin, SG, Nginx và direct health |
-| SPA 403/404 khi refresh | Custom error response về `/index.html` |
-| Upload 413 | `client_max_body_size 20M` |
+| CloudFront 504 ở /api/ | EC2, origin, SG, Nginx và direct health |
+| SPA 403/404 khi refresh | Custom error response về /index.html |
+| Upload 413 | client_max_body_size 20M |
 | File luôn Pending | Malware Protection, EventBridge và Lambda logs |
-| Download 423 | `scanstatus` và scan event |
+| Download 423 | scanstatus và scan event |
 | Recycle bin không Recover | Latest S3 Delete Marker và DynamoDB |
 | Approval 409 | Token đã dùng hoặc workflow timeout |
 | Quarantine thất bại | Allowlist, protected list, VPC và SG |

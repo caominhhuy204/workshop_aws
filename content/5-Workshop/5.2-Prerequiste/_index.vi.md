@@ -12,12 +12,12 @@ pre: " <b> 5.2. </b> "
 
 | Thành phần | Vai trò |
 |---|---|
-| CloudFront + AWS WAF | Điểm truy cập cho SPA và `/api/`, cache tại edge và bảo vệ request |
+| CloudFront + AWS WAF | Điểm truy cập cho SPA và /api/, cache tại edge và bảo vệ request |
 | S3 Frontend + OAC | Lưu bản build React private; chỉ CloudFront được đọc |
 | EC2 + Nginx + Gunicorn/Flask | Reverse proxy và xử lý API nghiệp vụ |
 | S3 Documents | Lưu tài liệu private, bật Versioning và mã hóa |
 | DynamoDB | Lưu metadata, audit phiên bản và incident |
-| Cognito | Xác thực người dùng và ánh xạ group `admin` |
+| Cognito | Xác thực người dùng và ánh xạ group admin |
 | GuardDuty + Security Hub | Quét malware và tổng hợp findings |
 | EventBridge + Lambda | Định tuyến và xử lý sự kiện |
 | Step Functions + SNS + API Gateway | Chờ và nhận quyết định phê duyệt |
@@ -28,7 +28,7 @@ pre: " <b> 5.2. </b> "
 
 - AWS account có quyền tạo các dịch vụ trong Workshop.
 - AWS CLI v2, Node.js 18+, npm, Python 3.10+, Git và Session Manager plugin.
-- Region mặc định: `ap-southeast-1`.
+- Region mặc định: ap-southeast-1.
 - Mã nguồn frontend, backend, Lambda và dashboard Grafana của dự án.
 
 Kiểm tra tài khoản và Region:
@@ -43,8 +43,8 @@ aws configure get region
 - Không cấp AWS credential cho frontend.
 - EC2 dùng instance profile và chỉ được truy cập bucket, bảng, Lambda, Cognito và log group cần thiết.
 - Lambda malware chỉ xử lý object đúng bucket/prefix và các bảng liên quan.
-- Lambda phản ứng chỉ tác động instance trong `ALLOWED_INSTANCE_IDS`.
-- Instance quan trọng phải nằm trong `PROTECTED_INSTANCE_IDS`.
+- Lambda phản ứng chỉ tác động instance trong ALLOWED_INSTANCE_IDS.
+- Instance quan trọng phải nằm trong PROTECTED_INSTANCE_IDS.
 - Grafana chỉ có quyền đọc CloudWatch.
 - Callback chỉ chấp nhận quyết định hợp lệ và task token còn hiệu lực.
 
@@ -62,7 +62,7 @@ Hệ thống sử dụng bốn Lambda chính để xử lý kết quả quét ma
 
 ## Cấu hình lớp dữ liệu
 
-Bucket tài liệu cần bật **Block Public Access**, **Versioning** và **Default encryption**. Dùng `quarantine/` cho file mới và `clean/` cho file đã được phát hành.
+Bucket tài liệu cần bật **Block Public Access**, **Versioning** và **Default encryption**. Dùng quarantine/ cho file mới và clean/ cho file đã được phát hành.
 
 ### Bật S3 Versioning
 
@@ -72,7 +72,7 @@ S3 Versioning đang ở trạng thái **Enabled**, cho phép giữ nhiều phiê
 
 ### Cấu hình mã hóa mặc định
 
-Bucket sử dụng server-side encryption với Amazon S3 managed keys (`SSE-S3`). Mọi object mới được S3 mã hóa tự động khi lưu trữ.
+Bucket sử dụng server-side encryption với Amazon S3 managed keys (SSE-S3). Mọi object mới được S3 mã hóa tự động khi lưu trữ.
 
 ![Default encryption SSE-S3 của bucket tài liệu](/5-workshop/document-security/img-03-s3-default-encryption.png)
 
@@ -92,15 +92,15 @@ Tạo ba bảng DynamoDB ở chế độ On-demand:
 
 | Bảng | Partition key | Sort key | Mục đích |
 |---|---|---|---|
-| `Documents` | `documentid` | — | Metadata và trạng thái hiện tại |
-| `SecurityIncidents` | `incidentid` | — | Finding và hành động phản ứng |
-| `DocumentVersionAudit` | `documentid` | `eventid` | Lịch sử thao tác theo phiên bản |
+| Documents | documentid | — | Metadata và trạng thái hiện tại |
+| SecurityIncidents | incidentid | — | Finding và hành động phản ứng |
+| DocumentVersionAudit | documentid | eventid | Lịch sử thao tác theo phiên bản |
 
 Ba bảng được triển khai ở chế độ **On-demand** và phải có trạng thái **Active** trước khi backend bắt đầu đọc hoặc ghi dữ liệu.
 
 ![Ba bảng DynamoDB của hệ thống ở trạng thái Active](/5-workshop/document-security/img-05-dynamodb-tables.png)
 
-Sau khi người dùng upload tài liệu, bảng `Documents` lưu metadata và trạng thái xử lý của từng tài liệu. Có thể kiểm tra dữ liệu tại **DynamoDB → Explore items → Documents**.
+Sau khi người dùng upload tài liệu, bảng Documents lưu metadata và trạng thái xử lý của từng tài liệu. Có thể kiểm tra dữ liệu tại **DynamoDB → Explore items → Documents**.
 
 ![Các item metadata trong bảng DynamoDB Documents](/5-workshop/document-security/img-06-dynamodb-documents-items.png)
 
@@ -123,5 +123,5 @@ COGNITO_ADMIN_GROUP=admin
 ```
 
 {{% notice warning %}}
-Không commit `.env`. Không ghi account ID, ARN, email, secret hoặc ID tài nguyên thật vào bản Workshop công khai.
+Không commit .env. Không ghi account ID, ARN, email, secret hoặc ID tài nguyên thật vào bản Workshop công khai.
 {{% /notice %}}

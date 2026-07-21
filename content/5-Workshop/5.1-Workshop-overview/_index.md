@@ -17,7 +17,7 @@ Document Security addresses these risks with layered security:
 - The document and frontend buckets remain private.
 - The browser never receives AWS access keys.
 - File type and the 20 MB limit are validated at both frontend and backend.
-- New files remain in `quarantine/` and can only be downloaded after reaching `CLEAN` status.
+- New files remain in quarantine/ and can only be downloaded after reaching CLEAN status.
 - S3 Versioning, Recycle bin, and an audit table protect the document lifecycle.
 - GuardDuty findings create incidents; EC2 isolation or stopping requires approval.
 - Logs, metrics, and action history are centralized for investigation and audit.

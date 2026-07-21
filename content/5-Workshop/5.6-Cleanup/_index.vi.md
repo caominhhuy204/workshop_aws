@@ -12,7 +12,7 @@ pre: " <b> 5.6. </b> "
 
 Thu thập các log group cho Nginx, system và bốn Lambda xử lý incident/malware/approval. Theo dõi metric của EC2, Lambda, DynamoDB, S3, EventBridge, SNS, Step Functions và CloudFront.
 
-Dashboard `DocumentApp-Monitoring` hiển thị các chỉ số vận hành chính của backend EC2. Memory và Disk được CloudWatch Agent gửi dưới dạng custom metrics, còn CPUUtilization đến từ metric mặc định của EC2.
+Dashboard DocumentApp-Monitoring hiển thị các chỉ số vận hành chính của backend EC2. Memory và Disk được CloudWatch Agent gửi dưới dạng custom metrics, còn CPUUtilization đến từ metric mặc định của EC2.
 
 ![CloudWatch dashboard theo dõi Memory Disk và CPU của backend](/5-workshop/document-security/img-27-cloudwatch-dashboard.png)
 
@@ -20,7 +20,7 @@ Log Management tập trung log của bốn Lambda, VPC Flow Logs, Nginx access/e
 
 ![Danh sách CloudWatch Log groups của hệ thống](/5-workshop/document-security/img-27-cloudwatch-log-groups.png)
 
-Grafana sử dụng CloudWatch data source tại `ap-southeast-1` với IAM role read-only. Truy cập qua SSM port forwarding, không mở TCP 3000 public:
+Grafana sử dụng CloudWatch data source tại ap-southeast-1 với IAM role read-only. Truy cập qua SSM port forwarding, không mở TCP 3000 public:
 
 ```bash
 aws ssm start-session \
@@ -29,7 +29,7 @@ aws ssm start-session \
   --parameters '{"portNumber":["3000"],"localPortNumber":["3000"]}'
 ```
 
-Sau đó mở `http://localhost:3000`.
+Sau đó mở http://localhost:3000.
 
 Dashboard **Document App - AWS Services Monitoring** tổng hợp Lambda invocations/errors/duration/throttles, DynamoDB read/write/system errors cùng metric S3 và SNS trong một màn hình vận hành.
 
@@ -63,12 +63,12 @@ Dashboard **Document App - Security Logs Monitoring** tập trung HTTP requests,
 | Incident | GuardDuty sample finding | Ghi incident và gửi SNS |
 | Approval | Quarantine, restore, stop, dùng lại link | Hành động đúng; link dùng lại trả 409 |
 | Health | Direct origin và CloudFront | Tất cả dependency OK |
-| SPA | Refresh `/login` hoặc `/incidents` | Không trả 404 |
+| SPA | Refresh /login hoặc /incidents | Không trả 404 |
 
 ## Tiêu chí nghiệm thu
 
 - Bucket không public; frontend chỉ qua CloudFront OAC.
-- Download chỉ mở cho file `CLEAN`.
+- Download chỉ mở cho file CLEAN.
 - User không gọi được API Admin.
 - Versioning, Recycle bin và audit hoạt động.
 - Finding tạo incident, cảnh báo và luồng phê duyệt.

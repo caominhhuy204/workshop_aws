@@ -12,12 +12,12 @@ pre: " <b> 5.2. </b> "
 
 | Component | Responsibility |
 |---|---|
-| CloudFront + AWS WAF | Entry point for the SPA and `/api/`; edge caching and request protection |
+| CloudFront + AWS WAF | Entry point for the SPA and /api/; edge caching and request protection |
 | S3 Frontend + OAC | Private React build readable only by CloudFront |
 | EC2 + Nginx + Gunicorn/Flask | Reverse proxy and business APIs |
 | S3 Documents | Private, versioned, encrypted document storage |
 | DynamoDB | Document metadata, version audit, and incidents |
-| Cognito | User authentication and `admin` group mapping |
+| Cognito | User authentication and admin group mapping |
 | GuardDuty + Security Hub | Malware scanning and security finding aggregation |
 | EventBridge + Lambda | Event routing and processing |
 | Step Functions + SNS + API Gateway | Approval wait state, notification, and callback |
@@ -28,7 +28,7 @@ pre: " <b> 5.2. </b> "
 
 - An AWS account with permissions for all workshop services.
 - AWS CLI v2, Node.js 18+, npm, Python 3.10+, Git, and the Session Manager plugin.
-- Default Region `ap-southeast-1`.
+- Default Region ap-southeast-1.
 - The project frontend, backend, Lambda, and Grafana source files.
 
 ```bash
@@ -38,7 +38,7 @@ aws configure get region
 
 ## IAM safety principles
 
-Do not provide AWS credentials to the frontend. Use a least-privilege EC2 instance profile, restrict malware Lambda access by bucket/prefix, limit response actions through `ALLOWED_INSTANCE_IDS`, protect critical instances through `PROTECTED_INSTANCE_IDS`, and grant Grafana read-only CloudWatch access.
+Do not provide AWS credentials to the frontend. Use a least-privilege EC2 instance profile, restrict malware Lambda access by bucket/prefix, limit response actions through ALLOWED_INSTANCE_IDS, protect critical instances through PROTECTED_INSTANCE_IDS, and grant Grafana read-only CloudWatch access.
 
 ### Backend EC2 IAM Role
 
@@ -54,7 +54,7 @@ Four primary Lambda functions process malware scan results, send approval reques
 
 ## Data layer
 
-Enable **Block Public Access**, **Versioning**, and **Default encryption** on the document bucket. Use `quarantine/` for new files and `clean/` for released files.
+Enable **Block Public Access**, **Versioning**, and **Default encryption** on the document bucket. Use quarantine/ for new files and clean/ for released files.
 
 ### Enable S3 Versioning
 
@@ -64,7 +64,7 @@ S3 Versioning is **Enabled**, preserving multiple versions of an object and supp
 
 ### Configure default encryption
 
-The bucket uses server-side encryption with Amazon S3 managed keys (`SSE-S3`). Amazon S3 automatically encrypts every new object at rest.
+The bucket uses server-side encryption with Amazon S3 managed keys (SSE-S3). Amazon S3 automatically encrypts every new object at rest.
 
 ![SSE-S3 default encryption on the document bucket](/5-workshop/document-security/img-03-s3-default-encryption.png)
 
@@ -84,15 +84,15 @@ Create three On-demand DynamoDB tables:
 
 | Table | Partition key | Sort key | Purpose |
 |---|---|---|---|
-| `Documents` | `documentid` | — | Current metadata and status |
-| `SecurityIncidents` | `incidentid` | — | Findings and response actions |
-| `DocumentVersionAudit` | `documentid` | `eventid` | Per-version action history |
+| Documents | documentid | — | Current metadata and status |
+| SecurityIncidents | incidentid | — | Findings and response actions |
+| DocumentVersionAudit | documentid | eventid | Per-version action history |
 
 All three tables use **On-demand** capacity and must be **Active** before the backend starts reading or writing data.
 
 ![The three system DynamoDB tables in Active state](/5-workshop/document-security/img-05-dynamodb-tables.png)
 
-After a user uploads a document, the `Documents` table stores its metadata and processing state. Review these records under **DynamoDB → Explore items → Documents**.
+After a user uploads a document, the Documents table stores its metadata and processing state. Review these records under **DynamoDB → Explore items → Documents**.
 
 ![Document metadata items in the DynamoDB Documents table](/5-workshop/document-security/img-06-dynamodb-documents-items.png)
 
@@ -115,5 +115,5 @@ COGNITO_ADMIN_GROUP=admin
 ```
 
 {{% notice warning %}}
-Never commit `.env` or expose real account IDs, ARNs, email addresses, secrets, or resource IDs in a public workshop.
+Never commit .env or expose real account IDs, ARNs, email addresses, secrets, or resource IDs in a public workshop.
 {{% /notice %}}

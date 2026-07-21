@@ -16,12 +16,12 @@ You will see **6 existing VPC endpoints** that support **AWS Systems Manager (SS
 ![endpoint](/images/5-Workshop/5.3-S3-vpc/endpoints.png)
 
 3. In the Create endpoint console:
-+ Specify name of the endpoint: ```s3-gwe```
++ Specify name of the endpoint: s3-gwe
 + In service category, choose **AWS services**
 
 ![endpoint](/images/5-Workshop/5.3-S3-vpc/create-s3-gwe1.png)
 
-+ In **Services**, type ```s3``` in the search box and choose the service with type **gateway**
++ In **Services**, type s3 in the search box and choose the service with type **gateway**
 
 ![endpoint](/images/5-Workshop/5.3-S3-vpc/services.png)
 

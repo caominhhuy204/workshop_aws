@@ -10,7 +10,7 @@ pre: " <b> 5. </b> "
 
 #### Overview
 
-This workshop builds **Document Security** in **Asia Pacific (Singapore) – `ap-southeast-1`**. The system manages the complete document lifecycle, scans files before download, and orchestrates security response with human approval.
+This workshop builds **Document Security** in **Asia Pacific (Singapore) – ap-southeast-1**. The system manages the complete document lifecycle, scans files before download, and orchestrates security response with human approval.
 
 The architecture uses React, CloudFront, and S3 for the frontend; Flask on EC2 for the backend; private S3 and DynamoDB for data; Cognito for authentication; GuardDuty, Security Hub, EventBridge, Lambda, and Step Functions for detection and response; and CloudWatch with Grafana for observability.
 
@@ -24,8 +24,8 @@ The architecture uses React, CloudFront, and S3 for the frontend; Flask on EC2 f
 
 | Role | Username | Password |
 |---|---|---|
-| Admin | `minhtri` | `Minhtri@123` |
-| User | `thanhnam` | `Thanhnam@123` |
+| Admin | minhtri | Minhtri@123 |
+| User | thanhnam | Thanhnam@123 |
 
 {{% notice warning %}}
 These are shared demo accounts. Do not upload real or sensitive documents, and do not change another user's password or account information.

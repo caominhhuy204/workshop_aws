@@ -10,7 +10,7 @@ pre: " <b> 5. </b> "
 
 #### Tổng quan
 
-Workshop này hướng dẫn xây dựng **Document Security** tại Region **Asia Pacific (Singapore) – `ap-southeast-1`**. Hệ thống quản lý toàn bộ vòng đời tài liệu, quét mã độc trước khi cho tải xuống và điều phối phản ứng sự cố có bước phê duyệt của con người.
+Workshop này hướng dẫn xây dựng **Document Security** tại Region **Asia Pacific (Singapore) – ap-southeast-1**. Hệ thống quản lý toàn bộ vòng đời tài liệu, quét mã độc trước khi cho tải xuống và điều phối phản ứng sự cố có bước phê duyệt của con người.
 
 Kiến trúc sử dụng React, CloudFront và S3 cho giao diện; Flask chạy trên EC2 cho backend; S3 private và DynamoDB cho dữ liệu; Cognito cho xác thực; GuardDuty, Security Hub, EventBridge, Lambda và Step Functions cho phát hiện, phê duyệt và phản ứng; CloudWatch và Grafana cho giám sát.
 
@@ -24,8 +24,8 @@ Kiến trúc sử dụng React, CloudFront và S3 cho giao diện; Flask chạy 
 
 | Vai trò | Tên đăng nhập | Mật khẩu |
 |---|---|---|
-| Admin | `minhtri` | `Minhtri@123` |
-| User | `thanhnam` | `Thanhnam@123` |
+| Admin | minhtri | Minhtri@123 |
+| User | thanhnam | Thanhnam@123 |
 
 {{% notice warning %}}
 Đây là tài khoản demo dùng chung. Không upload tài liệu thật hoặc dữ liệu nhạy cảm; không đổi mật khẩu hay thông tin tài khoản của người dùng khác.

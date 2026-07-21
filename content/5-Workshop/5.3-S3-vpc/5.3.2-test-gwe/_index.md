@@ -33,7 +33,7 @@ pre : " <b> 5.3.2 </b> "
 
 + First Cloud AI Journey [Lab](https://000058.awsstudygroup.com/1-introduce/) for indepth understanding of Session manager.
 
-1. In the **AWS Management Console**, start typing ```Systems Manager``` in the quick search box and press **Enter**:
+1. In the **AWS Management Console**, start typing Systems Manager in the quick search box and press **Enter**:
 
 ![system manager](/images/5-Workshop/5.3-S3-vpc/sm.png)
 
@@ -55,15 +55,15 @@ You have successfully start a session - connect to the EC2 instance in VPC cloud
 
 #### Create a file and upload to s3 bucket
 
-1. Change to the ssm-user's home directory by typing ```cd ~``` in the CLI
+1. Change to the ssm-user's home directory by typing cd ~ in the CLI
 
 ![Change user's dir](/images/5-Workshop/5.3-S3-vpc/cli1.png)
 
-2. Create a new file to use for testing with the command ```fallocate -l 1G testfile.xyz```, which will create a file of 1GB size named "testfile.xyz".
+2. Create a new file to use for testing with the command fallocate -l 1G testfile.xyz, which will create a file of 1GB size named "testfile.xyz".
 
 ![Create file](/images/5-Workshop/5.3-S3-vpc/cli-file.png)
 
-3. Upload file to S3 bucket with command ```aws s3 cp testfile.xyz s3://your-bucket-name```. Replace your-bucket-name with the name of S3 bucket that you created earlier.
+3. Upload file to S3 bucket with command aws s3 cp testfile.xyz s3://your-bucket-name. Replace your-bucket-name with the name of S3 bucket that you created earlier.
 
 ![Uploaded](/images/5-Workshop/5.3-S3-vpc/uploaded.png)
 

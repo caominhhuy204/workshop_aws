@@ -10,9 +10,9 @@ pre: " <b> 5.6. </b> "
 
 ## CloudWatch and Grafana
 
-Collect Nginx, system, and Lambda logs. Monitor EC2, Lambda, DynamoDB, S3, EventBridge, SNS, Step Functions, and CloudFront metrics. Configure the Grafana CloudWatch data source for `ap-southeast-1` with a read-only IAM role.
+Collect Nginx, system, and Lambda logs. Monitor EC2, Lambda, DynamoDB, S3, EventBridge, SNS, Step Functions, and CloudFront metrics. Configure the Grafana CloudWatch data source for ap-southeast-1 with a read-only IAM role.
 
-The `DocumentApp-Monitoring` dashboard displays key operational metrics for the backend EC2 instance. Memory and Disk are custom metrics published by CloudWatch Agent, while CPUUtilization is a standard EC2 metric.
+The DocumentApp-Monitoring dashboard displays key operational metrics for the backend EC2 instance. Memory and Disk are custom metrics published by CloudWatch Agent, while CPUUtilization is a standard EC2 metric.
 
 ![CloudWatch dashboard monitoring backend Memory Disk and CPU](/5-workshop/document-security/img-27-cloudwatch-dashboard.png)
 
@@ -29,7 +29,7 @@ aws ssm start-session \
   --parameters '{"portNumber":["3000"],"localPortNumber":["3000"]}'
 ```
 
-Open `http://localhost:3000`.
+Open http://localhost:3000.
 
 The **Document App - AWS Services Monitoring** dashboard combines Lambda invocations, errors, duration, and throttles; DynamoDB reads, writes, and system errors; and S3/SNS metrics in one operational view.
 
@@ -63,7 +63,7 @@ The **Document App - Security Logs Monitoring** dashboard centralizes HTTP reque
 | Incident | GuardDuty sample finding | Incident and SNS notification |
 | Approval | Quarantine, restore, stop, reused link | Correct action; reused link returns 409 |
 | Health | Origin and CloudFront | All dependencies OK |
-| SPA | Refresh `/login` or `/incidents` | No 404 |
+| SPA | Refresh /login or /incidents | No 404 |
 
 Acceptance requires private buckets, clean-only downloads, enforced Admin APIs, correct version/recycle/audit behavior, constrained EC2 response, fresh CloudWatch/Grafana data, and stable CloudFront SPA/API delivery.
 

@@ -10,21 +10,21 @@ pre: " <b> 5.7. </b> "
 
 ## Frontend update procedure
 
-Build the source, upload `dist/`, set `no-cache` on `index.html`, create a CloudFront `/*` invalidation, wait for completion, and verify in a private browser window.
+Build the source, upload dist/, set no-cache on index.html, create a CloudFront /* invalidation, wait for completion, and verify in a private browser window.
 
 ## Restart procedure
 
-Start EC2 and wait for `2/2` checks; verify the origin IP and Security Group; check Nginx and the backend service; call `/api/health` directly and through CloudFront; then test login, Documents, Incidents, and logs.
+Start EC2 and wait for 2/2 checks; verify the origin IP and Security Group; check Nginx and the backend service; call /api/health directly and through CloudFront; then test login, Documents, Incidents, and logs.
 
 ## Troubleshooting
 
 | Symptom | Check |
 |---|---|
-| CloudFront 504 on `/api/` | EC2, origin, SG, Nginx, and direct health |
-| SPA 403/404 on refresh | Custom error fallback to `/index.html` |
-| Upload 413 | `client_max_body_size 20M` |
+| CloudFront 504 on /api/ | EC2, origin, SG, Nginx, and direct health |
+| SPA 403/404 on refresh | Custom error fallback to /index.html |
+| Upload 413 | client_max_body_size 20M |
 | File remains Pending | Malware Protection, EventBridge, and Lambda logs |
-| Download 423 | `scanstatus` and scan event |
+| Download 423 | scanstatus and scan event |
 | Recycle recovery fails | Latest S3 Delete Marker and DynamoDB |
 | Approval 409 | Token reused or workflow timed out |
 | Quarantine fails | Allowlist, protected list, VPC, and SG |
